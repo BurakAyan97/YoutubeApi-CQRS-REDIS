@@ -7,6 +7,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var env = builder.Environment;
+
+builder.Configuration
+    .SetBasePath(env.ContentRootPath) //CAnlıya alınca root değişecek. Bir nevi generic olsun diye yapılan bir method
+      .AddJsonFile("appsettings.json", optional: false)
+      .AddJsonFile($"appsettings. {env.EnvironmentName}.json", optional: true);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
