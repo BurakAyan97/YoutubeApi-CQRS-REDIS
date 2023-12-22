@@ -6,7 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YoutubeApi.Application.Interfaces.Repositories;
+using YoutubeApi.Application.Interfaces.UnitOfWorks;
 using YoutubeApi.Persistance.Context;
+using YoutubeApi.Persistance.Repositories;
+using YoutubeApi.Persistance.UnitOfWorks;
 
 namespace YoutubeApi.Persistance
 {
@@ -14,8 +18,13 @@ namespace YoutubeApi.Persistance
     {
         public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(opt => 
+            services.AddDbContext<AppDbContext>(opt =>
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>);
         }
+
     }
 }
