@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace YoutubeApi.Application.Interfaces.AutoMapper
+{
+    public interface IMapper
+    {
+        //mapper.Map<BrandDto,Brand>(brand); gibi düşün. Destination ne verirsen o dönüyor
+        TDestination Map<TDestination, TSource>(TSource source, string? ignore = null);
+
+        IList<TDestination> Map<TDestination, TSource>(IList<TSource> sources, string? ignore = null);
+
+        TDestination Map<TDestination>(object source, string? ignore = null);
+
+        IList<TDestination> Map<TDestination>(IList<object> sources, string? ignore = null);
+    }
+}

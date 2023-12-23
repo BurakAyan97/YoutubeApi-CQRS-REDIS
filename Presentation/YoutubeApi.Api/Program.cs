@@ -1,4 +1,8 @@
 using YoutubeApi.Persistance;
+using YoutubeApi.Application;
+using YoutubeApi.Mapper;
+using YoutubeApi.Application.Exceptions;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
@@ -16,7 +20,8 @@ builder.Configuration
       .AddJsonFile($"appsettings. {env.EnvironmentName}.json", optional: true);
 
 builder.Services.AddPersistence(builder.Configuration);//jsonfile'dan aşağıda olmalı çünkü hangi enviromentda olduğumuzu bilip ona göre connstr seçsin. 
-
+builder.Services.AddApplication();
+builder.Services.AddCustomMapper();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.ConfigureExceptionHandlingMiddleware();
 
 app.UseAuthorization();
 

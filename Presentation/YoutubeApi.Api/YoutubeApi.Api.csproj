@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\YoutubeApi.Application\YoutubeApi.Application.csproj" />
+    <ProjectReference Include="..\..\Core\YoutubeApi.Mapper\YoutubeApi.Mapper.csproj" />
     <ProjectReference Include="..\..\Infrastructure\YoutubeApi.Persistance\YoutubeApi.Persistance.csproj" />
   </ItemGroup>
 
@@ -25,10 +28,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
