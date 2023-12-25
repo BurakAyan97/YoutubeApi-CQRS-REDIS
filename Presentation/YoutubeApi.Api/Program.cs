@@ -1,5 +1,6 @@
 using YoutubeApi.Persistance;
 using YoutubeApi.Application;
+using YoutubeApi.Infrastructure;
 using YoutubeApi.Mapper;
 using YoutubeApi.Application.Exceptions;
 
@@ -21,6 +22,7 @@ builder.Configuration
 
 builder.Services.AddPersistence(builder.Configuration);//jsonfile'dan aşağıda olmalı çünkü hangi enviromentda olduğumuzu bilip ona göre connstr seçsin. 
 builder.Services.AddApplication();
+builder.Services.AddInfrastructure();
 builder.Services.AddCustomMapper();
 var app = builder.Build();
 
