@@ -8,6 +8,6 @@ namespace YoutubeApi.Application.Features.Auth.Exceptions
         {
             public RefreshTokenShouldNotBeExpiredException() : base("Oturum açma süresi sona ermiştir.Lütfen tekrar giriş yapın") { }
         }
-       
+        
     }
 }

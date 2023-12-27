@@ -32,6 +32,7 @@ namespace YoutubeApi.Application
             ValidatorOptions.Global.LanguageManager.Culture = new("tr");
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehevior<,>));
         }
 
         //baserules classını inherit alan tipleri bulur (varsa) onları transiente ekler.
